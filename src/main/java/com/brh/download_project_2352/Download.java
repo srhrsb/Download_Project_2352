@@ -8,13 +8,17 @@ public class Download extends Thread {
     private String link;
     private String target;
     private File outputFile;
+    private Controller controller;
 
-    public Download(String link, String target) {
+    public Download(String link, String target, Controller controller) {
         this.link = link;
         this.target = target;
-
+        this.controller = controller;
     }
 
+    /**
+     * Startet die Implementierung des Nebenläufigen Methode im Thread
+     */
     @Override
     public void run() {
         try {
@@ -42,6 +46,8 @@ public class Download extends Thread {
                 buffOutputStream.write(buffer, 0, readByte);
                 downloaded += readByte;
                 System.out.println("Runtergeladen: " + downloaded);
+
+                controller.addProgress( downloaded );
             }
             buffOutputStream.close();
             buffInputStream.close();

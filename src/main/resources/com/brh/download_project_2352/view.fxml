@@ -13,10 +13,10 @@
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
     </padding>
    <children>
-      <HBox prefHeight="30.0" prefWidth="558.0">
+      <HBox prefHeight="76.0" prefWidth="558.0">
          <children>
-            <TextField prefHeight="26.0" prefWidth="506.0" />
-            <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="145.0" text="Hinzufügen" />
+            <TextField fx:id="urlTf" prefHeight="26.0" prefWidth="447.0" />
+            <Button mnemonicParsing="false" onAction="#onAddUrl" prefHeight="26.0" prefWidth="110.0" text="Hinzufügen" />
          </children>
       </HBox>
       <ListView fx:id="downloadList" prefHeight="200.0" prefWidth="200.0" />

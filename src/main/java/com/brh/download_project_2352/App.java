@@ -19,6 +19,8 @@ public class App extends Application {
         stage.setScene(scene);
         stage.show();
         this.currentStage = stage;
+
+
     }
 
     public static Stage getStage(){
