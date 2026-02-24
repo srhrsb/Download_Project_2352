@@ -3,17 +3,18 @@ package com.brh.download_project_2352;
 import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.function.Consumer;
 
 public class Download extends Thread {
     private String link;
     private String target;
     private File outputFile;
-    private Controller controller;
+    private Consumer callback;
 
-    public Download(String link, String target, Controller controller) {
+    public Download(String link, String target, Consumer<Integer> callback) {
         this.link = link;
         this.target = target;
-        this.controller = controller;
+        this.callback = callback;
     }
 
     /**
@@ -47,7 +48,7 @@ public class Download extends Thread {
                 downloaded += readByte;
                 System.out.println("Runtergeladen: " + downloaded);
 
-                controller.addProgress( downloaded );
+                callback.accept( readByte );
             }
             buffOutputStream.close();
             buffInputStream.close();

@@ -27,6 +27,7 @@
             <Button mnemonicParsing="false" onAction="#onSearch" prefHeight="26.0" prefWidth="94.0" text="Suchen" />
          </children>
       </HBox>
-      <Button mnemonicParsing="false" onAction="#onDownload" prefHeight="26.0" prefWidth="326.0" text="Download" />
+       <Label fx:id="progressLabel" prefHeight="28.0" prefWidth="200"  />
+       <Button mnemonicParsing="false" onAction="#onDownload" prefHeight="26.0" prefWidth="326.0" text="Download" />
    </children>
 </VBox>

@@ -1,5 +1,6 @@
 package com.brh.download_project_2352;
 
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -14,6 +15,10 @@ import java.net.URL;
 import java.util.ArrayList;
 
 public class Controller {
+
+    @FXML
+    private Label progressLabel;
+
     @FXML
     private ListView<String> downloadList;
 
@@ -53,7 +58,7 @@ public class Controller {
 
           for( var url : list ){
               if( url.isBlank() || target.isBlank() ) continue;
-              Download download = new Download(url, target, this);
+              Download download = new Download(url, target,this::addProgress);
               download.start();
           }
     }
@@ -84,11 +89,16 @@ public class Controller {
     }
 
 
-    public void addProgress( int progress ){
+    public void addProgress( int progress){
         totalProgress += progress;
         //Todo Progress im Label ausgeben
 
 
 
+        Platform.runLater(
+                ()->{
+                    progressLabel.setText("Runtergeladen: "+totalProgress);
+                }
+        );
     }
 }
